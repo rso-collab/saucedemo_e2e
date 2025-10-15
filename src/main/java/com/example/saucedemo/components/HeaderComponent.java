@@ -8,6 +8,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.List;
 
 public class HeaderComponent extends BasePage {
     private final WebDriverWait wait;
@@ -28,10 +29,11 @@ public class HeaderComponent extends BasePage {
     }
 
     public int getCartBadgeCount() {
+        List<WebElement> badges = driver.findElements(cartBadge);
+        if (badges.isEmpty()) return 0;
         try {
-            WebElement badge = wait.until(ExpectedConditions.presenceOfElementLocated(cartBadge));
-            return Integer.parseInt(badge.getText().trim());
-        } catch (Exception e) {
+            return Integer.parseInt(badges.get(0).getText().trim());
+        } catch (NumberFormatException e) {
             return 0;
         }
     }
