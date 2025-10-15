@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="SauceDemo Parallel Suite" parallel="classes" thread-count="5">
+    <listeners>
+        <listener class-name="com.example.saucedemo.utils.RetryListener"/>
+    </listeners>
+    <test name="ParallelTests">
+        <classes>
+            <class name="com.example.saucedemo.tests.PurchaseSingleItemTest"/>
+            <class name="com.example.saucedemo.tests.PurchaseMultipleItemsTest"/>
+            <class name="com.example.saucedemo.tests.LockedOutUserLoginNegativeTest"/>
+            <class name="com.example.saucedemo.tests.CheckoutMissingPostalCodeNegativeTest"/>
+            <class name="com.example.saucedemo.tests.ResetAppStateClearsCartTest"/>
+        </classes>
+    </test>
+</suite>

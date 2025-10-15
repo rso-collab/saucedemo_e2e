@@ -1,0 +1,37 @@
+package com.example.saucedemo.pages;
+
+import io.qameta.allure.Step;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.time.Duration;
+
+public class LoginPage extends BasePage {
+    private final WebDriverWait wait;
+
+    private final By usernameInput = By.id("user-name");
+    private final By passwordInput = By.id("password");
+    private final By loginButton = By.id("login-button");
+    private final By errorMessage = By.cssSelector("[data-test='error']");
+
+    public LoginPage(WebDriver driver) {
+        super(driver);
+        this.wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+    }
+
+    @Step
+    public void login(String username, String password) {
+        wait.until(ExpectedConditions.presenceOfElementLocated(usernameInput));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(usernameInput)).clear();
+        type(usernameInput, username);
+        type(passwordInput, password);
+        click(loginButton);
+    }
+
+    @Step
+    public String getErrorMessage() {
+        return wait.until(ExpectedConditions.visibilityOfElementLocated(errorMessage)).getText();
+    }
+}
