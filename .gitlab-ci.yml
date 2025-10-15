@@ -1,0 +1,101 @@
+image: docker:25.0.3
+
+services:
+  - docker:dind
+
+variables:
+  DOCKER_DRIVER: overlay2
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2"
+  GRID_VERSION: "4.23.0"
+  GRID_WAIT: "10"
+
+stages:
+  - build
+  - test
+  - report
+  - deploy
+
+# --------------------------------------
+# 1️⃣ BUILD STAGE
+# --------------------------------------
+build:
+  stage: build
+  script:
+    - echo "Building Docker test image..."
+    - docker build -t saucedemo-tests .
+  artifacts:
+    paths:
+      - target/
+    expire_in: 1 week
+
+# --------------------------------------
+# 2️⃣ TEST STAGE - Browser Matrix
+# --------------------------------------
+.test_template:
+  stage: test
+  script:
+    - echo "Starting Selenium Grid with ${BROWSER} node..."
+    - docker-compose up -d selenium-hub ${BROWSER}
+    - echo "Waiting ${GRID_WAIT}s for grid to initialize..."
+    - sleep ${GRID_WAIT}
+    - echo "Running tests on ${BROWSER}..."
+    - docker-compose run --rm -e BROWSER=${BROWSER} -e ENV=${ENV} test-runner
+  after_script:
+    - docker-compose down
+  artifacts:
+    when: always
+    paths:
+      - target/allure-results/
+      - target/surefire-reports/
+    expire_in: 1 week
+
+chrome-tests:
+  extends: .test_template
+  variables:
+    BROWSER: chrome
+    ENV: stage
+
+firefox-tests:
+  extends: .test_template
+  variables:
+    BROWSER: firefox
+    ENV: stage
+
+edge-tests:
+  extends: .test_template
+  variables:
+    BROWSER: edge
+    ENV: stage
+
+# --------------------------------------
+# 3️⃣ REPORT STAGE - Allure Report
+# --------------------------------------
+report:
+  stage: report
+  image: frankescobar/allure-docker-service
+  script:
+    - echo "Generating Allure report..."
+    - allure generate target/allure-results --clean -o target/allure-report
+  artifacts:
+    paths:
+      - target/allure-report/
+    expire_in: 2 weeks
+  needs:
+    - chrome-tests
+    - firefox-tests
+    - edge-tests
+
+# --------------------------------------
+# 4️⃣ DEPLOY STAGE - GitLab Pages
+# --------------------------------------
+pages:
+  stage: deploy
+  script:
+    - echo "Publishing Allure report to GitLab Pages..."
+    - mkdir -p public
+    - cp -r target/allure-report/* public/
+  artifacts:
+    paths:
+      - public
+  only:
+    - main

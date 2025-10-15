@@ -1,0 +1,72 @@
+version: "3.8"
+
+services:
+  # ----------------------------
+  # Selenium Hub (central router)
+  # ----------------------------
+  selenium-hub:
+    image: selenium/hub:4.23.0
+    container_name: selenium-hub
+    ports:
+      - "4442:4442"
+      - "4443:4443"
+      - "4444:4444"
+
+  # ----------------------------
+  # Chrome Node
+  # ----------------------------
+  chrome:
+    image: selenium/node-chrome:4.23.0
+    container_name: chrome-node
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  # ----------------------------
+  # Firefox Node
+  # ----------------------------
+  firefox:
+    image: selenium/node-firefox:4.23.0
+    container_name: firefox-node
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  # ----------------------------
+  # Edge Node
+  # ----------------------------
+  edge:
+    image: selenium/node-edge:4.23.0
+    container_name: edge-node
+    shm_size: 2gb
+    depends_on:
+      - selenium-hub
+    environment:
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
+
+  # ----------------------------
+  # Test Runner (Java Maven)
+  # ----------------------------
+  test-runner:
+    build: .
+    container_name: saucedemo-test-runner
+    depends_on:
+      - selenium-hub
+      - chrome
+      - firefox
+      - edge
+    environment:
+      - HUB_HOST=selenium-hub
+      - BROWSER=chrome
+      - ENV=stage
+    command: mvn clean test -Denv=$ENV -Dbrowser=remote
