@@ -2,7 +2,7 @@ package com.ecosio.saucedemo.tests;
 
 import com.ecosio.saucedemo.components.HeaderComponent;
 import com.ecosio.saucedemo.pages.*;
-import com.example.saucedemo.pages.*;
+import com.ecosio.saucedemo.pages.*;
 import com.ecosio.saucedemo.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;

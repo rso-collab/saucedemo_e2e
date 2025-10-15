@@ -2,7 +2,7 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.example</groupId>
+    <groupId>com.ecosio</groupId>
     <artifactId>saucedemo-selenium-testng</artifactId>
     <version>1.1.1</version>
     <name>SauceDemo Selenium TestNG Suite</name>
@@ -57,7 +57,7 @@
                 <configuration>
                     <!-- Use testng.xml by default -->
                     <suiteXmlFiles>
-                        <suiteXmlFile>${suiteXmlFile}</suiteXmlFile>
+                        <suiteXmlFile>${suite}</suiteXmlFile>
                     </suiteXmlFiles>
 
                     <!-- Default value if none provided -->

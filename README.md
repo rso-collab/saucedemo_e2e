@@ -88,11 +88,11 @@ src/main/resources/log4j2.xml
 
 ```
 src/
-  main/java/com/example/saucedemo/
+  main/java/com/ecosio/saucedemo/
     pages/           # Page Object classes
     components/      # Reusable UI components
     utils/           # BaseTest, ConfigReader, WebDriverFactory, etc.
-  test/java/com/example/saucedemo/
+  test/java/com/ecosio/saucedemo/
     tests/           # TestNG test classes
     utils/           # RetryAnalyzer, RetryListener, etc.
 
