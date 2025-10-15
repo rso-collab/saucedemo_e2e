@@ -21,7 +21,7 @@ application.
 
 ### 1️⃣ Prerequisites
 
-- Java 17
+- Java 17+
 - Maven
 - Browsers: Chrome, Firefox, Edge
 
@@ -105,6 +105,4 @@ testng-parallel.xml  # Parallel execution suite
 ## ✅ Summary
 
 This framework is modular, extendable, and CI/CD ready.  
-It supports multi-browser testing, parallel execution, and Allure reporting for detailed analysis.
-
-**Run → Report → Analyze → Iterate 🔁**
+It supports multi-browser testing, parallel execution, and Allure reporting.
