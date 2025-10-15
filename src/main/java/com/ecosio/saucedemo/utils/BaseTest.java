@@ -1,4 +1,4 @@
-package com.example.saucedemo.utils;
+package com.ecosio.saucedemo.utils;
 
 import io.qameta.allure.Allure;
 import io.qameta.allure.testng.AllureTestNg;

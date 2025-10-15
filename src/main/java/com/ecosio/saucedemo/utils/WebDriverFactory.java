@@ -1,4 +1,4 @@
-package com.example.saucedemo.utils;
+package com.ecosio.saucedemo.utils;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;

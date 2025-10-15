@@ -1,4 +1,4 @@
-package com.example.saucedemo.utils;
+package com.ecosio.saucedemo.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;

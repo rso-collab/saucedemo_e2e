@@ -1,4 +1,4 @@
-package com.example.saucedemo.pages;
+package com.ecosio.saucedemo.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;

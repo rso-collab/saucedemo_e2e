@@ -1,7 +1,7 @@
-package com.example.saucedemo.tests;
+package com.ecosio.saucedemo.tests;
 
-import com.example.saucedemo.pages.LoginPage;
-import com.example.saucedemo.utils.BaseTest;
+import com.ecosio.saucedemo.pages.LoginPage;
+import com.ecosio.saucedemo.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

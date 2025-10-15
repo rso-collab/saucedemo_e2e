@@ -1,45 +1,40 @@
-package com.example.saucedemo.tests;
+package com.ecosio.saucedemo.tests;
 
-import com.example.saucedemo.components.HeaderComponent;
+import com.ecosio.saucedemo.components.HeaderComponent;
+import com.ecosio.saucedemo.pages.*;
 import com.example.saucedemo.pages.*;
-import com.example.saucedemo.utils.BaseTest;
+import com.ecosio.saucedemo.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class PurchaseMultipleItemsTest extends BaseTest {
+public class PurchaseSingleItemTest extends BaseTest {
 
-    @Test(description = "E2E: Purchase multiple items and verify item total equals sum of individual prices")
-    public void purchaseMultipleItemsAndVerifyTotal() {
-        logger.info("Starting PurchaseMultipleItemsTest...");
+    @Test(description = "E2E: Standard user purchases a single item successfully")
+    public void purchaseSingleItem() {
+        logger.info("Starting PurchaseSingleItemTest...");
         LoginPage login = new LoginPage(getDriver());
         login.login("standard_user", "secret_sauce");
 
         InventoryPage inventory = new InventoryPage(getDriver());
         inventory.waitForPage();
         inventory.addItemToCartByName("Sauce Labs Backpack");
-        inventory.addItemToCartByName("Sauce Labs Bike Light");
-        inventory.addItemToCartByName("Sauce Labs Bolt T-Shirt");
 
         HeaderComponent header = new HeaderComponent(getDriver());
-        Assert.assertEquals(header.getCartBadgeCount(), 3, "Cart badge should show 3 items");
+        Assert.assertEquals(header.getCartBadgeCount(), 1, "Cart badge should show 1 item");
 
         header.openCart();
 
         CartPage cart = new CartPage(getDriver());
         cart.waitForPage();
-        Assert.assertEquals(cart.getItemCount(), 3, "Cart should contain 3 items");
+        Assert.assertEquals(cart.getItemCount(), 1, "Cart should contain 1 item");
         cart.proceedToCheckout();
 
         CheckoutStepOnePage step1 = new CheckoutStepOnePage(getDriver());
-        step1.fillInfo("Jane", "Smith", "90210");
+        step1.fillInfo("John", "Doe", "12345");
         step1.clickContinue();
 
         CheckoutStepTwoPage step2 = new CheckoutStepTwoPage(getDriver());
         step2.waitForPage();
-        double expected = step2.sumOfIndividualPrices();
-        double displayed = step2.getDisplayedItemTotal();
-        Assert.assertEquals(displayed, expected, 0.01, "Displayed item total should equal the sum of line items");
-
         step2.finish();
 
         CheckoutCompletePage done = new CheckoutCompletePage(getDriver());

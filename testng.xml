@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <suite name="SauceDemo Sequential Suite" parallel="false">
     <listeners>
-        <listener class-name="com.example.saucedemo.utils.RetryListener"/>
+        <listener class-name="utils.com.ecosio.saucedemo.RetryListener"/>
     </listeners>
     <test name="SequentialTests">
         <classes>
-            <class name="com.example.saucedemo.tests.PurchaseSingleItemTest"/>
-            <class name="com.example.saucedemo.tests.PurchaseMultipleItemsTest"/>
-            <class name="com.example.saucedemo.tests.LockedOutUserLoginNegativeTest"/>
-            <class name="com.example.saucedemo.tests.CheckoutMissingPostalCodeNegativeTest"/>
-            <class name="com.example.saucedemo.tests.ResetAppStateClearsCartTest"/>
+            <class name="tests.com.ecosio.saucedemo.PurchaseSingleItemTest"/>
+            <class name="tests.com.ecosio.saucedemo.PurchaseMultipleItemsTest"/>
+            <class name="tests.com.ecosio.saucedemo.LockedOutUserLoginNegativeTest"/>
+            <class name="tests.com.ecosio.saucedemo.CheckoutMissingPostalCodeNegativeTest"/>
+            <class name="tests.com.ecosio.saucedemo.ResetAppStateClearsCartTest"/>
         </classes>
     </test>
 </suite>

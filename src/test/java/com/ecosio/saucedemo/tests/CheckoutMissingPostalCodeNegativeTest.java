@@ -1,11 +1,11 @@
-package com.example.saucedemo.tests;
+package com.ecosio.saucedemo.tests;
 
-import com.example.saucedemo.components.HeaderComponent;
-import com.example.saucedemo.pages.CartPage;
-import com.example.saucedemo.pages.CheckoutStepOnePage;
-import com.example.saucedemo.pages.InventoryPage;
-import com.example.saucedemo.pages.LoginPage;
-import com.example.saucedemo.utils.BaseTest;
+import com.ecosio.saucedemo.components.HeaderComponent;
+import com.ecosio.saucedemo.pages.CartPage;
+import com.ecosio.saucedemo.pages.CheckoutStepOnePage;
+import com.ecosio.saucedemo.pages.InventoryPage;
+import com.ecosio.saucedemo.pages.LoginPage;
+import com.ecosio.saucedemo.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
