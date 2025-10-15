@@ -5,6 +5,9 @@
 # Maven
 target/
 
+# Allure reports
+.allure/
+
 # IntelliJ
 .idea/
 *.iml
