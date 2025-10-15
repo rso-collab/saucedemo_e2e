@@ -5,7 +5,7 @@
     <groupId>com.ecosio</groupId>
     <artifactId>saucedemo-selenium-testng</artifactId>
     <version>1.1.1</version>
-    <name>SauceDemo Selenium TestNG Suite</name>
+    <name>SauceDemo E2E for Ecosio</name>
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
@@ -14,7 +14,7 @@
         <selenium.version>4.21.0</selenium.version>
         <testng.version>7.10.2</testng.version>
         <webdrivermanager.version>5.9.2</webdrivermanager.version>
-        <suiteXmlFile>testng.xml</suiteXmlFile>
+        <suite>testng.xml</suite>
     </properties>
     <dependencies>
         <dependency>
@@ -55,29 +55,18 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire.version}</version>
                 <configuration>
-                    <!-- Use testng.xml by default -->
                     <suiteXmlFiles>
                         <suiteXmlFile>${suite}</suiteXmlFile>
                     </suiteXmlFiles>
-
-                    <!-- Default value if none provided -->
-<!--                    <systemPropertyVariables>-->
-<!--                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
-<!--                    </systemPropertyVariables>-->
-
-                    <!-- Allows -Dtest=Class or Class#method overrides -->
                     <useSystemClassLoader>true</useSystemClassLoader>
                     <useFile>false</useFile>
-
                     <systemPropertyVariables>
-<!--                        <suiteXmlFile>testng.xml</suiteXmlFile>-->
                         <browser>${browser}</browser>
                         <headless>${headless}</headless>
                         <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
-            <!-- ✅ Allure Maven plugin -->
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
