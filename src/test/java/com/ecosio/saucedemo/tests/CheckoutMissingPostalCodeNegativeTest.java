@@ -5,7 +5,6 @@ import com.ecosio.saucedemo.pages.CartPage;
 import com.ecosio.saucedemo.pages.CheckoutStepOnePage;
 import com.ecosio.saucedemo.pages.InventoryPage;
 import com.ecosio.saucedemo.pages.LoginPage;
-import com.ecosio.saucedemo.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

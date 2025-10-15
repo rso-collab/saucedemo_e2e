@@ -3,7 +3,6 @@ package com.ecosio.saucedemo.tests;
 import com.ecosio.saucedemo.components.HeaderComponent;
 import com.ecosio.saucedemo.pages.InventoryPage;
 import com.ecosio.saucedemo.pages.LoginPage;
-import com.ecosio.saucedemo.utils.BaseTest;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 

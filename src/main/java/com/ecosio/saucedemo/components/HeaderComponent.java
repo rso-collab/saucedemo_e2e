@@ -10,7 +10,6 @@ import java.time.Duration;
 import java.util.List;
 
 public class HeaderComponent extends BasePage {
-    private final WebDriverWait wait;
 
     private final By menuButton = By.id("react-burger-menu-btn");
     private final By logoutLink = By.id("logout_sidebar_link");

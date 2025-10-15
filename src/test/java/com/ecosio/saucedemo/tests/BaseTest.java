@@ -1,5 +1,7 @@
-package com.ecosio.saucedemo.utils;
+package com.ecosio.saucedemo.tests;
 
+import com.ecosio.saucedemo.utils.ConfigReader;
+import com.ecosio.saucedemo.utils.WebDriverFactory;
 import io.qameta.allure.Allure;
 import io.qameta.allure.testng.AllureTestNg;
 import org.apache.logging.log4j.LogManager;

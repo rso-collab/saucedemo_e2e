@@ -38,8 +38,11 @@ public class WebDriverFactory {
                 WebDriverManager.edgedriver().setup();
                 EdgeOptions eo = new EdgeOptions();
                 if (headless) eo.addArguments("--headless=new", "--window-size=1920,1080");
-                eo.addArguments("--disable-notifications", "--disable-save-password-bubble",
-                        "--disable-infobars", "--disable-extensions", "--disable-popup-blocking");
+                eo.addArguments("--disable-notifications",
+                        "--disable-save-password-bubble",
+                        "--disable-infobars",
+                        "--disable-extensions",
+                        "--disable-popup-blocking");
                 eo.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                 driver = new EdgeDriver(eo);
                 break;
@@ -49,8 +52,11 @@ public class WebDriverFactory {
                 WebDriverManager.chromedriver().setup();
                 ChromeOptions co = new ChromeOptions();
                 if (headless) co.addArguments("--headless=new", "--window-size=1920,1080");
-                co.addArguments("--disable-notifications", "--disable-save-password-bubble",
-                        "--disable-infobars", "--disable-extensions", "--disable-popup-blocking",
+                co.addArguments("--disable-notifications",
+                        "--disable-save-password-bubble",
+                        "--disable-infobars",
+                        "--disable-extensions",
+                        "--disable-popup-blocking",
                         "--guest");
                 co.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
                 driver = new ChromeDriver(co);
