@@ -1,14 +1,13 @@
 # SauceDemo Selenium Automation Framework 🚀
 
-This is a **Java Selenium + TestNG** automation framework for testing the [SauceDemo](https://www.saucedemo.com/)
-application.  
-It includes **Allure Reports** for rich visual results and **Log4j2** for structured logging.
+This is a **Java Selenium** automation framework for testing the [SauceDemo](https://www.saucedemo.com/)
+application.
 
 ---
 
 ## 🧩 Tech Stack
 
-- **Language:** Java 11+
+- **Language:** Java 17
 - **Test Runner:** TestNG
 - **Automation:** Selenium WebDriver
 - **Build Tool:** Maven
