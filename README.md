@@ -1,4 +1,4 @@
-# SauceDemo E2E Automation Framework - Ecosio 🚀
+# SauceDemo E2E Automation Framework 🚀
 
 This is a **Java Selenium** automation framework for testing the [SauceDemo](https://www.saucedemo.com/)
 application.
